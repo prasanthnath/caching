@@ -1,0 +1,30 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "2.3.1.RELEASE"
+    id "io.spring.dependency-management" version "1.0.9.RELEASE"
+}
+
+group 'com.arcesium'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework:spring-context:5.2.7.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE'
+    implementation 'com.hazelcast:hazelcast:4.1.1'
+    implementation 'net.sf.ehcache:ehcache:2.10.6'
+    implementation 'net.sf.ehcache:ehcache-jgroupsreplication:1.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar {
+    mainClassName = 'com.arcesium.cache.server.Application'
+}
