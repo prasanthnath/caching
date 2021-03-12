@@ -1,30 +1,44 @@
 package com.arcesium.cache.controller;
 
-import com.arcesium.cache.replicated.ArcEhCache;
-import com.arcesium.cache.distributed.ArcHzCache;
+import com.arcesium.cache.ArcReaderCache;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author gullapal
  */
 @RestController
+@RequestMapping("/cache")
 public class TestController {
     @Autowired
-    private ArcEhCache arcEhCache;
-    @Autowired
-    private ArcHzCache arcHzCache;
+    private List<ArcReaderCache<String, String>> readerCaches;
 
-    @RequestMapping(path = "/welcome")
-    public String cache() {
-        arcEhCache.put("1", "abc");
-        arcHzCache.put("1", "abc");
-        return "Welcome "+arcEhCache.get("1")+", "+arcHzCache.get("1");
+    @PostMapping(path = "/{keyVal}")
+    public String cache(@PathVariable String keyVal) {
+        String[] split = keyVal.split(":");
+        if(split.length < 2) {
+            throw new IllegalArgumentException("Key:Value syntax not followed!");
+        }
+        readerCaches.forEach(cache -> cache.put(split[0], split[1]));
+        return returnValue(split[0]);
     }
 
-    @RequestMapping(path = "/")
-    public String get() {
-        return "Values "+arcEhCache.get("1")+", "+arcHzCache.get("1");
+    @GetMapping(value = "/{key}")
+    public String getCachedValues(@PathVariable(name = "key") String key) {
+        return returnValue(key);
+    }
+
+    @NotNull
+    private String returnValue(String key) {
+        return readerCaches.stream().map(cache -> {
+            String cacheName = cache.getClass().getSimpleName();
+            String cachedVal = Optional.ofNullable(cache.get(key)).orElse("");
+            return cacheName + ": " + cachedVal;
+        }).collect(Collectors.joining("; "));
     }
 }

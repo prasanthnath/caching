@@ -1,11 +1,12 @@
 package com.arcesium.cache.server;
 
+import com.arcesium.cache.config.AppConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.arcesium.cache" })
+@Import({AppConfig.class})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

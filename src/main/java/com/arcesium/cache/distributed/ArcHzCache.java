@@ -4,13 +4,11 @@ import com.arcesium.cache.ArcReaderCache;
 import com.arcesium.cache.CacheConstants;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Component
 public class ArcHzCache<T, R> implements ArcReaderCache<T, R> {
-    private Map<T, R> cache;
+    private final Map<T, R> cache;
 
     public ArcHzCache() {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(new HzCacheConfig().build());

@@ -5,16 +5,15 @@ import com.arcesium.cache.CacheConstants;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-@Component
 public class ArcEhCache<T, R> implements ArcReaderCache<T, R> {
-    private Cache cacheStore;
+    private final CacheManager cacheManager;
+    private final Cache cacheStore;
 
     public ArcEhCache(){
-        CacheManager cacheManager = CacheManager.create(new EhCacheConfig().build());
+        cacheManager = CacheManager.create(new EhCacheConfig().build());
         cacheStore = cacheManager.getCache(CacheConstants.DEFAULT_CACHE_NAME);
     }
 
