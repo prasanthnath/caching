@@ -1,16 +1,16 @@
-package com.arcesium.cache.distributed;
+package com.prasna.cache.distributed;
 
-import com.arcesium.cache.ArcReaderCache;
-import com.arcesium.cache.CacheConstants;
+import com.prasna.cache.PrasnaReaderCache;
+import com.prasna.cache.CacheConstants;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
 import java.util.Map;
 
-public class ArcHzCache<T, R> implements ArcReaderCache<T, R> {
+public class PrasnaHzCache<T, R> implements PrasnaReaderCache<T, R> {
     private final Map<T, R> cache;
 
-    public ArcHzCache() {
+    public PrasnaHzCache() {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(new HzCacheConfig().build());
         this.cache = hazelcastInstance.getMap(CacheConstants.DEFAULT_CACHE_NAME);
     }

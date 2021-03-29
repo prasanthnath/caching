@@ -1,6 +1,6 @@
-package com.arcesium.cache.server;
+package com.prasna.cache.server;
 
-import com.arcesium.cache.config.AppConfig;
+import com.prasna.cache.config.AppConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

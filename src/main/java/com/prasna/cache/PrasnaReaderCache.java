@@ -1,11 +1,11 @@
-package com.arcesium.cache;
+package com.prasna.cache;
 
 
 /**
  * @author gullapal
  *
  */
-public interface ArcReaderCache<T, R> {
+public interface PrasnaReaderCache<T, R> {
 	
 	/**
 	 * Associates value with key in this cache. If the cache previously contained a 

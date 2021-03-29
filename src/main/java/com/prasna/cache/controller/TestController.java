@@ -1,6 +1,6 @@
-package com.arcesium.cache.controller;
+package com.prasna.cache.controller;
 
-import com.arcesium.cache.ArcReaderCache;
+import com.prasna.cache.PrasnaReaderCache;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/cache")
 public class TestController {
     @Autowired
-    private List<ArcReaderCache<String, String>> readerCaches;
+    private List<PrasnaReaderCache<String, String>> readerCaches;
 
     @PostMapping(path = "/{keyVal}")
     public String cache(@PathVariable String keyVal) {

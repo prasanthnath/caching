@@ -1,7 +1,7 @@
-package com.arcesium.cache.offheap;
+package com.prasna.cache.offheap;
 
-import com.arcesium.cache.ArcReaderCache;
-import com.arcesium.cache.CacheConstants;
+import com.prasna.cache.PrasnaReaderCache;
+import com.prasna.cache.CacheConstants;
 import net.openhft.chronicle.map.ChronicleMap;
 import net.openhft.chronicle.map.ChronicleMapBuilder;
 
@@ -11,11 +11,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ArcChronicleMapCache<T, R> implements ArcReaderCache<T, R> {
+public class PrasnaChronicleMapCache<T, R> implements PrasnaReaderCache<T, R> {
     private final ChronicleMap<T, R> cache;
     private final Path persistedFilePath;
 
-    public ArcChronicleMapCache(T sampleT, R sampleR, long size) {
+    public PrasnaChronicleMapCache(T sampleT, R sampleR, long size) {
         ChronicleMapBuilder<T, R> builder = ChronicleMapBuilder
                 .of((Class<T>)sampleT.getClass(), (Class<R>)sampleR.getClass())
                 .name("Sample Chronicle Map")

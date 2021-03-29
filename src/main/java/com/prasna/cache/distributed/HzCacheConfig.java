@@ -1,6 +1,6 @@
-package com.arcesium.cache.distributed;
+package com.prasna.cache.distributed;
 
-import com.arcesium.cache.CacheConstants;
+import com.prasna.cache.CacheConstants;
 import com.hazelcast.config.*;
 
 /**

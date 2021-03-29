@@ -1,18 +1,18 @@
-package com.arcesium.cache.replicated;
+package com.prasna.cache.replicated;
 
-import com.arcesium.cache.ArcReaderCache;
-import com.arcesium.cache.CacheConstants;
+import com.prasna.cache.PrasnaReaderCache;
+import com.prasna.cache.CacheConstants;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
 import java.util.Objects;
 
-public class ArcEhCache<T, R> implements ArcReaderCache<T, R> {
+public class PrasnaEhCache<T, R> implements PrasnaReaderCache<T, R> {
     private final CacheManager cacheManager;
     private final Cache cacheStore;
 
-    public ArcEhCache(){
+    public PrasnaEhCache(){
         cacheManager = CacheManager.create(new EhCacheConfig().build());
         cacheStore = cacheManager.getCache(CacheConstants.DEFAULT_CACHE_NAME);
     }

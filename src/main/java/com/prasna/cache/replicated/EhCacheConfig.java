@@ -1,6 +1,6 @@
-package com.arcesium.cache.replicated;
+package com.prasna.cache.replicated;
 
-import com.arcesium.cache.CacheConstants;
+import com.prasna.cache.CacheConstants;
 import net.sf.ehcache.config.CacheConfiguration;
 import net.sf.ehcache.config.Configuration;
 import net.sf.ehcache.config.FactoryConfiguration;

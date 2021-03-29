@@ -27,5 +27,5 @@ test {
 }
 
 bootJar {
-    mainClassName = 'com.arcesium.cache.server.Application'
+    mainClassName = 'com.prasna.cache.server.Application'
 }
